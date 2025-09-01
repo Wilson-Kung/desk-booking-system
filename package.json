@@ -1,13 +1,12 @@
 {
   "name": "desk-booking",
   "version": "1.0.0",
-  "description": "Simple desk booking system with MongoDB Atlas",
-  "main": "server.js",
+  "description": "Simple desk booking system with MongoDB Atlas and Vercel Serverless Functions",
+  "main": "api/bookings.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node api/bookings.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
     "mongodb": "^5.0.0"
   }
 }
