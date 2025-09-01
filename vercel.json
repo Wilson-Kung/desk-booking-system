@@ -1,12 +1,7 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/server.js" },
+    { "source": "/api/bookings", "destination": "/api/bookings.js" },
+    { "source": "/api/bookings-post", "destination": "/api/bookings-post.js" },
     { "source": "/(.*)", "destination": "/public/$1" }
-  ],
-  "functions": {
-    "server.js": {
-      "memory": 128,
-      "maxDuration": 10
-    }
-  }
+  ]
 }
