@@ -1,12 +1,13 @@
 {
   "name": "desk-booking",
   "version": "1.0.0",
-  "description": "Simple desk booking system",
+  "description": "Simple desk booking system with MongoDB Atlas",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^5.0.0"
   }
 }
