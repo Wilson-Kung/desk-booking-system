@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 // MongoDB Atlas 連線字串，建議使用環境變數
-const uri = process.env.MONGODB_URI || 'mongodb+srv://desk_booking_user:PowhOAtvLNGDgHDr@cluster0.swwjz9s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri = process.env.MONGODB_URI || '您的 MongoDB Atlas 連線字串';
 const client = new MongoClient(uri);
 
 // 中間件
