@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 載入事件從後端
   function loadEvents(fetchInfo, successCallback, failureCallback) {
-    fetch('/bookings')
+    fetch('/api/bookings')
       .then(response => response.json())
       .then(data => {
         const events = data.map(booking => ({
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    fetch('/bookings', {
+    fetch('/api/bookings-post', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, start, end })
