@@ -24,22 +24,25 @@
   </form>
   <p id="message"></p>
 
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
   <script src="script.js"></script>
   <script>
-    // 動態設置時間範圍（當天 09:00 至 17:45）
+    // 動態設置時間範圍（今天 09:00 至未來 30 天 17:45）
     function setTimeConstraints() {
-      const today = new Date().toISOString().split('T')[0];
+      const today = new Date();
+      const minDate = today.toISOString().split('T')[0];
+      const maxDate = new Date(today);
+      maxDate.setDate(today.getDate() + 30); // 未來 30 天
+      const maxDateStr = maxDate.toISOString().split('T')[0];
+      
       const startInput = document.getElementById('start');
       const endInput = document.getElementById('end');
       
-      startInput.min = `${today}T09:00`;
-      startInput.max = `${today}T17:45`;
-      endInput.min = `${today}T09:00`;
-      endInput.max = `${today}T17:45`;
+      startInput.min = `${minDate}T09:00`;
+      startInput.max = `${maxDateStr}T17:45`;
+      endInput.min = `${minDate}T09:00`;
+      endInput.max = `${maxDateStr}T17:45`;
     }
     // 當頁面載入時設置
     document.addEventListener('DOMContentLoaded', setTimeConstraints);
   </script>
-</body>
-</html>
