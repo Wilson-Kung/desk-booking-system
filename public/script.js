@@ -42,6 +42,24 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+     const isSameDay = startDate.toISOString().split('T')[0] === endDate.toISOString().split('T')[0];
+
+    if (!isStartTimeValid || !isEndTimeValid) {
+      message.textContent = 'Appointment time must be between 9:00 AM and 5:45 PM every day';
+      return;
+    }
+
+    if (!isDateValid) {
+      message.textContent = 'Appointment date must be between today and the next 30 days';
+      return;
+    }
+
+    if (!isSameDay) {
+      message.textContent = 'Start and end times must be on the same day';
+      return;
+    }
+
+
     fetch('/api/bookings-post', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
