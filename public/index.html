@@ -3,28 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CCCO 預約系統</title>
+  <title>CCCO M405 Booking System</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>CCCO 預約系統</h1>
+  <h1>CCCO M405 Booking System</h1>
   
   <div id="calendar"></div>
   
-  <h2>新增預約</h2>
+  <h2>Add a new appointment</h2>
   <form id="booking-form">
-    <label>姓名：</label>
+    <label>Name：</label>
     <input type="text" id="name" required><br>
-    <label>開始時間：</label>
+    <label>Start Time：</label>
     <input type="datetime-local" id="start" required><br>
-    <label>結束時間：</label>
+    <label>End Time：</label>
     <input type="datetime-local" id="end" required><br>
-    <button type="submit">預約</button>
+    <button type="submit">Submit appointment</button>
   </form>
   <p id="message"></p>
 
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    // 動態設置時間範圍（當天 09:00 至 17:45）
+    function setTimeConstraints() {
+      const today = new Date().toISOString().split('T')[0];
+      const startInput = document.getElementById('start');
+      const endInput = document.getElementById('end');
+      
+      startInput.min = `${today}T09:00`;
+      startInput.max = `${today}T17:45`;
+      endInput.min = `${today}T09:00`;
+      endInput.max = `${today}T17:45`;
+    }
+    // 當頁面載入時設置
+    document.addEventListener('DOMContentLoaded', setTimeConstraints);
+  </script>
 </body>
 </html>
