@@ -37,25 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const start = document.getElementById('start').value;
     const end = document.getElementById('end').value;
 
-    // 檢查時間是否在 09:00 至 17:45
-    const startDate = new Date(start);
-    const endDate = new Date(end);
-    const startHour = startDate.getHours();
-    const startMinute = startDate.getMinutes();
-    const endHour = endDate.getHours();
-    const endMinute = endDate.getMinutes();
-
-    const isStartValid = (startHour > 9 || (startHour === 9 && startMinute >= 0)) && 
-                        (startHour < 17 || (startHour === 17 && startMinute <= 45));
-    const isEndValid = (endHour > 9 || (endHour === 9 && endMinute >= 0)) && 
-                      (endHour < 17 || (endHour === 17 && endMinute <= 45));
-
-    if (!isStartValid || !isEndValid) {
-      message.textContent = 'Appointments must be made between 9:00 a.m. and 5:45 p.m.';
-      return;
-    }
-
-    if (startDate >= endDate) {
+    if (new Date(start) >= new Date(end)) {
       message.textContent = 'End time must be later than start time';
       return;
     }
@@ -72,15 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return response.json();
     })
     .then(() => {
-      message.textContent = '預約成功！';
+      message.textContent = 'Appointment successful！';
       calendar.refetchEvents(); // 重新載入日曆
       form.reset();
     })
     .catch(err => {
-      message.textContent = err.error || 'Appointment failed';
-    });
-  });
-});
       message.textContent = err.error || 'Appointment failed';
     });
   });
